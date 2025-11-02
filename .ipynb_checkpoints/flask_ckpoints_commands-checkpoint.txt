@@ -1,0 +1,28 @@
+1 сheck if service is working
+curl -i http://localhost:5000/health
+
+2 see models available for asking
+curl -s http://localhost:5000/model-classes
+
+3 train and save model
+cmd curl -s -X POST http://localhost:5000/models/train -H "Content-Type: application/json" -d "{""model_type"":""random_forest"",""params"":{""n_estimators"":10,""max_depth"":3},""X"":[[5.1,3.5,1.4,0.2],[4.9,3.0,1.4,0.2]],""y"":[0,0]}" > %TEMP%\train_resp.json && type %TEMP%\train_resp.json
+
+bash curl -s -X POST http://localhost:5000/models/train -H "Content-Type: application/json" -d '{"model_type":"random_forest","params":{"n_estimators":10,"max_depth":3},"X":[[5.1,3.5,1.4,0.2],[4.9,3.0,1.4,0.2]],"y":[0,0]}'| tee /tmp/train_resp.json
+
+4 see all models
+curl -s http://localhost:5000/models
+
+5 get info on a specific model
+curl -i http://localhost:5000/models/${MODEL_ID} #model_id to be changed to existing
+
+6 get predictions 
+cmd curl -s -X POST http://localhost:5000/models/${MODEL_ID}/predict -H "Content-Type: application/json" -d "{\"X\":[[5.1,3.5,1.4,0.2],[4.9,3.0,1.4,0.2]]}"  #model_id to be changed to existing
+ex curl -s -X POST http://localhost:5000/models/0aafe76f-7324-49a7-a0d0-33f5e5ec844b/predict -H "Content-Type: application/json" -d "{\"X\":[[5.1,3.5,1.4,0.2],[4.9,3.0,1.4,0.2]]}" 
+
+bash curl -s -X POST http://localhost:5000/models/${MODEL_ID}/predict -H "Content-Type: application/json" -d '{"X":[[5.1,3.5,1.4,0.2],[4.9,3.0,1.4,0.2]]}' #model_id to be changed to existing
+
+7 retrain model
+cmd  curl -s -X POST http://localhost:5000/models/%MODEL_ID%/retrain -H "Content-Type: application/json" -d "{\"X\":[[5.1,3.5,1.4,0.2],[4.9,3.0,1.4,0.2]], \"y\":[1,1]}" #model_id to be changed to existing
+ex curl -s -X POST http://localhost:5000/models/0aafe76f-7324-49a7-a0d0-33f5e5ec844b/predict -H "Content-Type: application/json" -d "{\"X\":[[5.1,3.5,1.4,0.2],[4.9,3.0,1.4,0.2]]}"
+
+bash curl -s -X POST http://localhost:5000/models/${MODEL_ID}/retrain -H "Content-Type: application/json" -d '{"X":[[5.1,3.5,1.4,0.2],[4.9,3.0,1.4,0.2]], "y":[1,1]}' #model_id to be changed to existing
