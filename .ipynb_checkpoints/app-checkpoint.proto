@@ -1,0 +1,94 @@
+syntax = "proto3";
+
+package mlservice;
+
+// Key fearures
+service MLService {
+  rpc HealthCheck(HealthRequest) returns (HealthResponse);
+  rpc GetModelClasses(Empty) returns (ModelClassesResponse);
+  rpc ListModels(Empty) returns (ListModelsResponse);
+  rpc TrainModel(TrainRequest) returns (TrainResponse);
+  rpc GetModel(ModelId) returns (ModelResponse);
+  rpc DeleteModel(ModelId) returns (DeleteResponse);
+  rpc Predict(PredictRequest) returns (PredictResponse);
+  rpc RetrainModel(RetrainRequest) returns (RetrainResponse);
+  rpc GetMetrics(ModelId) returns (MetricsResponse);
+}
+
+// Messages
+message Empty {}
+
+message HealthRequest {}
+
+message HealthResponse {
+  string status = 1;
+}
+
+message ModelClassesResponse {
+  map<string, ModelClassInfo> model_classes = 1;
+}
+
+message ModelClassInfo {
+  string class_name = 1;
+  repeated string hyperparameters = 2;
+  string description = 3;
+}
+
+message TrainRequest {
+  string model_type = 1;
+  map<string, string> params = 2;
+  repeated FeatureArray X = 3; 
+  repeated int32 y = 4;
+}
+
+message FeatureArray {
+  repeated float features = 1;
+}
+
+message TrainResponse {
+  string model_id = 1;
+  map<string, float> metrics = 2;
+}
+
+message PredictRequest {
+  string model_id = 1;
+  repeated FeatureArray X = 2;
+}
+
+message PredictResponse {
+  repeated float predictions = 1;
+}
+
+message ModelId {
+  string model_id = 1;
+}
+
+message RetrainRequest {
+  string model_id = 1;
+  repeated FeatureArray X = 2;
+  repeated int32 y = 3;
+}
+
+message RetrainResponse {
+  map<string, float> metrics = 1;
+}
+
+message MetricsResponse {
+  map<string, float> metrics = 1;
+}
+
+message ModelResponse {
+  string id = 1;
+  string model_type = 2;
+  map<string, string> params = 3;
+  string created_at = 4;
+  map<string, float> metrics = 5;
+}
+
+message ListModelsResponse {
+  repeated ModelResponse models = 1;
+}
+
+message DeleteResponse {
+  bool success = 1;
+}

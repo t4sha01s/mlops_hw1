@@ -1,21 +1,13 @@
 import os
-from flask import Flask, redirect, url_for, session, request
+from flask import Flask, redirect, url_for, session, request, jsonify
 from flask_restx import Api, Resource, Namespace, fields, abort
 from authlib.integrations.flask_client import OAuth
 from werkzeug.middleware.proxy_fix import ProxyFix
 
 # Импорт из models.py
-from models import (
-    db, MLModel, AVAILABLE_MODELS, get_model_path, 
-    convert_params, calculate_metrics, create_model_record
-)
-import joblib
+from models import db, MLModel, AVAILABLE_MODELS, get_model_path, convert_params, calculate_metrics, create_model_record
 import uuid
-from datetime import datetime
-
-"""
-Setting app configurations
-"""
+import joblib
 
 app = Flask(__name__)
 
@@ -25,7 +17,7 @@ app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///test.db'
 app.secret_key = os.urandom(24)
 app.wsgi_app = ProxyFix(app.wsgi_app)
 
-# Инициализация базы данных
+# Инициализация БД
 db.init_app(app)
 
 api = Api(
@@ -35,16 +27,12 @@ api = Api(
     Before getting to work with this application please go through authorization procedure.
     To do so add /login to your current url.
     (for example, http://localhost:5000/login)"""
- )
+)
 
 namespace = api.namespace('', 'Click the down arrow to expand the content')
 
-"""
-Initializing authorization via github
-"""
-
+# OAuth конфигурация (остается без изменений)
 oauth = OAuth(app)
-
 github = oauth.register(
     name='github',
     client_id='Ov23liWccuX6xt5sYPwl',
@@ -75,15 +63,12 @@ def authorize():
     profile = resp.json()
     if 'id' not in profile:
         abort(400, "GitHub authorization failed")
-    github_id = profile['id']
     session['token_oauth'] = token
     session['github_id'] = profile['id']
     return redirect(url_for('index'))
 
 def get_user_id():
-    if 'github_id' in session:
-        return session['github_id']
-    return 
+    return session.get('github_id')
 
 # Swagger models
 train_model = api.model('TrainModel', {
@@ -102,14 +87,12 @@ retrain_model = api.model('RetrainModel', {
     'y': fields.List(fields.Integer, required=True, description='Labels')
 })
 
-# Endpoints
-
+# Endpoints (упрощенные за счет вынесенной логики)
 @namespace.route('/health')
 class Health(Resource):
     @api.doc(description="Проверка статуса сервиса")
     def get(self):
         return {'status': 'ok'}, 200
-
 
 @namespace.route('/model-classes')
 class ModelClasses(Resource):
@@ -138,38 +121,31 @@ class TrainModel(Resource):
         if model_type not in AVAILABLE_MODELS:
             abort(400, 'Unsupported model type')
 
-        # Конвертируем параметры
+        # Используем функции из models.py
         converted_params = convert_params(params)
-        
         ModelClass = AVAILABLE_MODELS[model_type]['class']
         model = ModelClass(**converted_params)
         model.fit(X, y)
 
-        # Вычисляем метрики
         y_pred = model.predict(X)
         metrics = calculate_metrics(y, y_pred)
 
-        # Сохраняем модель
         model_id = str(uuid.uuid4())
         path = get_model_path(model_id)
         joblib.dump(model, path)
 
-        # Создаем запись в БД
         record = create_model_record(model_id, model_type, converted_params, path, metrics)
         db.session.add(record)
         db.session.commit()
 
         return {'model_id': model_id, 'metrics': metrics}, 201
 
-
 @namespace.route('/models')
 class ListModels(Resource):
     @api.doc(description="Get list of models trained")
     def get(self):
         models = MLModel.query.all()
-        result = [model.to_dict() for model in models]
-        return result, 200
-
+        return [model.to_dict() for model in models], 200
 
 @namespace.route('/models/<string:model_id>')
 class ModelById(Resource):
@@ -191,7 +167,6 @@ class ModelById(Resource):
         db.session.commit()
         return '', 204
 
-
 @namespace.route('/models/<string:model_id>/predict')
 class ModelPredict(Resource):
     @api.doc(description="Make prediction")
@@ -204,7 +179,6 @@ class ModelPredict(Resource):
         X = request.json.get('X')
         preds = model.predict(X).tolist()
         return {'predictions': preds}, 200
-
 
 @namespace.route('/models/<string:model_id>/retrain')
 class ModelRetrain(Resource):
@@ -222,13 +196,12 @@ class ModelRetrain(Resource):
         model.fit(X, y)
         joblib.dump(model, record.file_path)
 
-        # Обновляем метрики
         y_pred = model.predict(X)
-        record.metrics = calculate_metrics(y, y_pred)
+        metrics = calculate_metrics(y, y_pred)
+        record.metrics = metrics
         db.session.commit()
 
-        return {'status': 'retrained', 'metrics': record.metrics}, 200
-
+        return {'status': 'retrained', 'metrics': metrics}, 200
 
 @namespace.route('/metrics/<string:model_id>')
 class ModelMetrics(Resource):
@@ -237,15 +210,9 @@ class ModelMetrics(Resource):
         record = MLModel.query.filter_by(id=model_id).first()
         if not record:
             abort(404, 'Model not found')
-        return record.metrics, 200   
+        return record.metrics, 200
 
 if __name__ == '__main__':
     with app.app_context():
         db.create_all()
     app.run(debug=True)
-
-
-
-
-    
-    
