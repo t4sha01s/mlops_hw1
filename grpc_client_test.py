@@ -5,7 +5,7 @@ import app_pb2_grpc
 def test_grpc():
     # Подключаемся к серверу
     channel = grpc.insecure_channel('localhost:50051')
-    stub = app_pb2_grpc.MLServiceStub(channel)  # Исправлено на MLService
+    stub = app_pb2_grpc.MLServiceStub(channel) 
     
     print("=== Testing gRPC Server ===\n")
     
