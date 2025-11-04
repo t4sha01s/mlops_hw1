@@ -1,1 +1,25 @@
 gRPC server started on port 50051
+er - INFO - Starting gRPC server
+2025-11-04 03:23:10,633 - grpc_server - INFO - Database tables created for gRPC server
+2025-11-04 03:23:10,642 - grpc_server - INFO - gRPC server started on port 50051
+2025-11-04 03:23:10,658 - grpc_server - INFO - gRPC server waiting for termination
+2025-11-04 03:23:34,673 - grpc_server - INFO - Health check requested via gRPC
+2025-11-04 03:23:34,673 - grpc_server - INFO - Request for available model classes via gRPC
+2025-11-04 03:23:34,673 - grpc_server - INFO - Returning 2 model classes via gRPC
+2025-11-04 03:23:34,673 - grpc_server - INFO - Starting model training request via gRPC
+2025-11-04 03:23:34,673 - grpc_server - INFO - Training model type: logistic_regression with 4 samples via gRPC
+2025-11-04 03:23:34,697 - grpc_server - INFO - Model trained successfully via gRPC. ID: 998e5e90-a674-427c-ac50-03f989b754fd, Metrics: {'accuracy': 1.0, 'precision': 1.0, 'recall': 1.0}
+2025-11-04 03:23:34,699 - grpc_server - INFO - Request for list of all models via gRPC
+2025-11-04 03:23:34,704 - grpc_server - INFO - Returning 17 models via gRPC
+2025-11-04 03:23:34,705 - grpc_server - INFO - Request for model info via gRPC: 998e5e90-a674-427c-ac50-03f989b754fd
+2025-11-04 03:23:34,705 - grpc_server - INFO - Returning model info via gRPC: 998e5e90-a674-427c-ac50-03f989b754fd
+2025-11-04 03:23:34,705 - grpc_server - INFO - Prediction request for model via gRPC: 998e5e90-a674-427c-ac50-03f989b754fd
+2025-11-04 03:23:34,705 - grpc_server - INFO - Making prediction via gRPC with 2 samples
+2025-11-04 03:23:34,705 - grpc_server - INFO - Prediction completed via gRPC. Returning 2 predictions
+2025-11-04 03:23:34,721 - grpc_server - INFO - Metrics request for model via gRPC: 998e5e90-a674-427c-ac50-03f989b754fd
+2025-11-04 03:23:34,724 - grpc_server - INFO - Returning metrics via gRPC for model: 998e5e90-a674-427c-ac50-03f989b754fd
+2025-11-04 03:23:34,726 - grpc_server - INFO - Retrain request for model via gRPC: 998e5e90-a674-427c-ac50-03f989b754fd
+2025-11-04 03:23:34,730 - grpc_server - INFO - Retraining model via gRPC with 4 samples
+2025-11-04 03:23:34,756 - grpc_server - INFO - Model retrained successfully via gRPC: 998e5e90-a674-427c-ac50-03f989b754fd, New metrics: {'accuracy': 0.5, 'precision': 0.5, 'recall': 0.5}
+2025-11-04 03:23:34,759 - grpc_server - INFO - Request to delete model via gRPC: 998e5e90-a674-427c-ac50-03f989b754fd
+2025-11-04 03:23:34,762 - grpc_server - INFO - Model file deleted via gRPC: saved_models/998e5e90-a674-427c-ac50-03f989b754fd.joblib

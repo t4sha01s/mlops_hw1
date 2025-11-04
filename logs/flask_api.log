@@ -1,0 +1,86 @@
+2025-11-04 02:31:58,780 - flask_app - INFO - Starting Flask application
+2025-11-04 02:31:58,784 - flask_app - INFO - Database tables created
+2025-11-04 02:31:58,785 - flask_app - INFO - Flask app running in debug mode
+2025-11-04 02:32:19,552 - flask_app - INFO - Starting Flask application
+2025-11-04 02:32:19,552 - flask_app - INFO - Database tables created
+2025-11-04 02:32:19,552 - flask_app - INFO - Flask app running in debug mode
+2025-11-04 02:32:32,739 - flask_app - INFO - Starting Flask application
+2025-11-04 02:32:32,754 - flask_app - INFO - Database tables created
+2025-11-04 02:32:32,754 - flask_app - INFO - Flask app running in debug mode
+2025-11-04 02:32:34,831 - flask_app - INFO - Starting Flask application
+2025-11-04 02:32:34,831 - flask_app - INFO - Database tables created
+2025-11-04 02:32:34,831 - flask_app - INFO - Flask app running in debug mode
+2025-11-04 02:33:04,083 - flask_app - INFO - Health check requested
+2025-11-04 02:33:04,180 - flask_app - INFO - Request for available model classes
+2025-11-04 02:33:04,180 - flask_app - INFO - Returning 2 model classes
+2025-11-04 02:33:04,329 - flask_app - INFO - Starting model training request
+2025-11-04 02:33:04,330 - flask_app - INFO - Training model type: random_forest with 2 samples
+2025-11-04 02:33:04,378 - flask_app - INFO - Model trained successfully. ID: 4d067821-f3a2-4548-8bda-9d1f0169ed67, Metrics: {'accuracy': 1.0, 'precision': 1.0, 'recall': 1.0}
+2025-11-04 02:33:04,643 - flask_app - INFO - Request for list of all models
+2025-11-04 02:33:04,643 - flask_app - INFO - Returning 14 models
+2025-11-04 02:33:04,816 - flask_app - INFO - Request for model info: 4d067821-f3a2-4548-8bda-9d1f0169ed67
+2025-11-04 02:33:04,818 - flask_app - INFO - Returning model info: 4d067821-f3a2-4548-8bda-9d1f0169ed67
+2025-11-04 02:33:04,958 - flask_app - INFO - Prediction request for model: 4d067821-f3a2-4548-8bda-9d1f0169ed67
+2025-11-04 02:33:04,971 - flask_app - INFO - Making prediction with 2 samples
+2025-11-04 02:33:04,976 - flask_app - INFO - Prediction completed. Returning 2 predictions
+2025-11-04 02:33:05,088 - flask_app - INFO - Retrain request for model: 4d067821-f3a2-4548-8bda-9d1f0169ed67
+2025-11-04 02:33:05,100 - flask_app - INFO - Retraining model with 2 samples
+2025-11-04 02:33:05,118 - flask_app - INFO - Model retrained successfully: 4d067821-f3a2-4548-8bda-9d1f0169ed67, New metrics: {'accuracy': 1.0, 'precision': 1.0, 'recall': 1.0}
+2025-11-04 02:37:12,013 - flask_app - INFO - Starting Flask application
+2025-11-04 02:37:12,015 - flask_app - INFO - Database tables created
+2025-11-04 02:37:12,015 - flask_app - INFO - Flask app running in debug mode
+2025-11-04 02:37:14,785 - flask_app - INFO - Starting Flask application
+2025-11-04 02:37:14,785 - flask_app - INFO - Database tables created
+2025-11-04 02:37:14,785 - flask_app - INFO - Flask app running in debug mode
+2025-11-04 02:38:48,269 - flask_app - INFO - Starting Flask application
+2025-11-04 02:38:48,273 - flask_app - INFO - Database tables created
+2025-11-04 02:38:48,274 - flask_app - INFO - Flask app running in debug mode
+2025-11-04 02:39:04,565 - flask_app - INFO - Starting Flask application
+2025-11-04 02:39:04,567 - flask_app - INFO - Database tables created
+2025-11-04 02:39:04,567 - flask_app - INFO - Flask app running in debug mode
+2025-11-04 02:39:08,878 - flask_app - INFO - Starting Flask application
+2025-11-04 02:39:08,878 - flask_app - INFO - Database tables created
+2025-11-04 02:39:08,878 - flask_app - INFO - Flask app running in debug mode
+2025-11-04 02:39:11,410 - flask_app - INFO - Starting Flask application
+2025-11-04 02:39:11,410 - flask_app - INFO - Database tables created
+2025-11-04 02:39:11,410 - flask_app - INFO - Flask app running in debug mode
+2025-11-04 02:39:17,173 - flask_app - INFO - Health check requested
+2025-11-04 02:39:17,267 - flask_app - INFO - Request for available model classes
+2025-11-04 02:39:17,267 - flask_app - INFO - Returning 2 model classes
+2025-11-04 02:39:17,409 - flask_app - INFO - Starting model training request
+2025-11-04 02:39:17,409 - flask_app - INFO - Training model type: random_forest with 2 samples
+2025-11-04 02:39:17,441 - flask_app - INFO - Model trained successfully. ID: 88ef6a9c-a017-4977-87dd-db42c2b0c2ee, Metrics: {'accuracy': 1.0, 'precision': 1.0, 'recall': 1.0}
+2025-11-04 02:39:17,730 - flask_app - INFO - Request for list of all models
+2025-11-04 02:39:17,733 - flask_app - INFO - Returning 15 models
+2025-11-04 02:39:17,878 - flask_app - INFO - Request for model info: 88ef6a9c-a017-4977-87dd-db42c2b0c2ee
+2025-11-04 02:39:17,881 - flask_app - INFO - Returning model info: 88ef6a9c-a017-4977-87dd-db42c2b0c2ee
+2025-11-04 02:39:18,016 - flask_app - INFO - Prediction request for model: 88ef6a9c-a017-4977-87dd-db42c2b0c2ee
+2025-11-04 02:39:18,019 - flask_app - INFO - Making prediction with 2 samples
+2025-11-04 02:39:18,019 - flask_app - INFO - Prediction completed. Returning 2 predictions
+2025-11-04 02:39:18,160 - flask_app - INFO - Retrain request for model: 88ef6a9c-a017-4977-87dd-db42c2b0c2ee
+2025-11-04 02:39:18,160 - flask_app - INFO - Retraining model with 2 samples
+2025-11-04 02:39:18,176 - flask_app - INFO - Model retrained successfully: 88ef6a9c-a017-4977-87dd-db42c2b0c2ee, New metrics: {'accuracy': 1.0, 'precision': 1.0, 'recall': 1.0}
+2025-11-04 02:39:44,112 - flask_app - INFO - Starting Flask application
+2025-11-04 02:39:44,118 - flask_app - INFO - Database tables created
+2025-11-04 02:39:44,119 - flask_app - INFO - Flask app running in debug mode
+2025-11-04 03:23:10,822 - flask_app - INFO - Starting Flask application
+2025-11-04 03:23:10,824 - flask_app - INFO - Database tables created
+2025-11-04 03:23:10,824 - flask_app - INFO - Flask app running in debug mode
+2025-11-04 03:23:12,762 - flask_app - INFO - Starting Flask application
+2025-11-04 03:23:12,763 - flask_app - INFO - Database tables created
+2025-11-04 03:23:12,763 - flask_app - INFO - Flask app running in debug mode
+2025-11-04 03:23:23,347 - flask_app - INFO - Health check requested
+2025-11-04 03:23:23,439 - flask_app - INFO - Request for available model classes
+2025-11-04 03:23:23,439 - flask_app - INFO - Returning 2 model classes
+2025-11-04 03:23:23,588 - flask_app - INFO - Starting model training request
+2025-11-04 03:23:23,588 - flask_app - INFO - Training model type: random_forest with 2 samples
+2025-11-04 03:23:23,610 - flask_app - INFO - Model trained successfully. ID: b409b626-2256-424e-9760-e22abbefa844, Metrics: {'accuracy': 1.0, 'precision': 1.0, 'recall': 1.0}
+2025-11-04 03:23:23,895 - flask_app - INFO - Request for list of all models
+2025-11-04 03:23:23,895 - flask_app - INFO - Returning 16 models
+2025-11-04 03:23:24,033 - flask_app - INFO - Request for model info: b409b626-2256-424e-9760-e22abbefa844
+2025-11-04 03:23:24,033 - flask_app - INFO - Returning model info: b409b626-2256-424e-9760-e22abbefa844
+2025-11-04 03:23:24,170 - flask_app - INFO - Prediction request for model: b409b626-2256-424e-9760-e22abbefa844
+2025-11-04 03:23:24,172 - flask_app - INFO - Making prediction with 2 samples
+2025-11-04 03:23:24,172 - flask_app - INFO - Prediction completed. Returning 2 predictions
+2025-11-04 03:23:24,302 - flask_app - INFO - Retrain request for model: b409b626-2256-424e-9760-e22abbefa844
+2025-11-04 03:23:24,315 - flask_app - INFO - Retraining model with 2 samples

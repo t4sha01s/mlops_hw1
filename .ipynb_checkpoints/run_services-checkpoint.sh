@@ -26,7 +26,7 @@ echo ""
 echo "Чтобы остановить сервисы: нажмите Ctrl+C"
 
 # Обрабатываем Ctrl+C, чтобы корректно завершить оба процесса
-trap "echo 'Останавливаем сервисы...'; kill ${FLASK_PID} ${GRPC_PID}; wait ${FLASK_PID} ${GRPC_PID} 2>/dev/null; echo '✅ Готово'; exit 0" SIGINT SIGTERM
+trap "echo 'Останавливаем сервисы...'; kill ${FLASK_PID} ${GRPC_PID}; wait ${FLASK_PID} ${GRPC_PID} 2>/dev/null; echo 'Готово'; exit 0" SIGINT SIGTERM
 
 # Ждём завершения процессов
 wait ${FLASK_PID} ${GRPC_PID}
