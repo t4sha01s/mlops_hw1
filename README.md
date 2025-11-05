@@ -36,7 +36,7 @@ python grpc_client_test.py
 - Запуск: `streamlit run dashboard.py`
 
 ### Одновременный запуск
-В репозитории есть скрипт `run_services.sh`, который запускает REST и gRPC серверы параллельно в фоне.
+В репозитории есть скрипт `run_services.sh`, который запускает REST, gRPC и Streamlit серверы параллельно в фоне.
 
 ## Аутентификация
 ### GitHub OAuth в REST API
@@ -52,7 +52,8 @@ python grpc_client_test.py
 - `app.proto` — описание gRPC API 
 - `app_pb2.py`, `app_pb2_grpc.py` — сгенерированные файлы protobuf 
 - `grpc_server.py` — реализация gRPC сервиса (использует те же функции/модели из `models.py`).
-- `generate_proto.sh` — скрипт для генерации python protobuf-файлов 
+- `generate_proto.sh` — скрипт для генерации python protobuf-файлов
+- `dashboard.pu`  — реализация интерактивного дашборда на основе Streamlit
 ### Тестирование:
 - `grpc_client_test.py` — пример клиента для проверки gRPC-интерфейса
 - `test_flask_api.sh` — простой bash-скрипт для базового тестирования REST API.
