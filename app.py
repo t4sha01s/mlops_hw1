@@ -57,11 +57,10 @@ Initializing authorization via github
 """
 
 oauth = OAuth(app)
-
 github = oauth.register(
     name='github',
-    client_id='Ov23liWccuX6xt5sYPwl',
-    client_secret='9594d99c778b94ad8b9441937d182badb43ae795',
+    client_id=os.getenv("GITHUB_CLIENT_ID"),
+    client_secret=os.getenv("GITHUB_CLIENT_SECRET"),
     access_token_url='https://github.com/login/oauth/access_token',
     access_token_params=None,
     authorize_url='https://github.com/login/oauth/authorize',

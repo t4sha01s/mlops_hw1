@@ -1,12 +1,18 @@
+## Состав группы
+1) Семина Наталья (отвечала за REST API и Streamlit дашборд)
+2) Серикова Светлана (отвечала за gRPC сервис и ML)
+
 ## Быстрый старт
 
 ### 1. Запуск сервисов
-"```bash"
+```bash
 chmod +x run_services.sh
 ./run_services.sh
+```
 ### 2. Тестирование gRPC
-"```bash"
+```bash
 python grpc_client_test.py
+```
 
 После выполнения вы увидите, что все методы gRPC успешно отработали:
 - HealthCheck - проверка статуса сервиса
@@ -53,7 +59,7 @@ python grpc_client_test.py
 - `app_pb2.py`, `app_pb2_grpc.py` — сгенерированные файлы protobuf 
 - `grpc_server.py` — реализация gRPC сервиса (использует те же функции/модели из `models.py`).
 - `generate_proto.sh` — скрипт для генерации python protobuf-файлов
-- `dashboard.pu`  — реализация интерактивного дашборда на основе Streamlit
+- `dashboard.py`  — реализация интерактивного дашборда на основе Streamlit
 ### Тестирование:
 - `grpc_client_test.py` — пример клиента для проверки gRPC-интерфейса
 - `test_flask_api.sh` — простой bash-скрипт для базового тестирования REST API.
