@@ -9,6 +9,10 @@ set -euo pipefail
 LOG_DIR="./logs"
 mkdir -p "${LOG_DIR}"
 
+echo "Компиляция gRPC proto файлов..."
+python -m grpc_tools.protoc -I. --python_out=. --grpc_python_out=. app.proto
+echo "gRPC proto файлы успешно скомпилированы"
+
 echo "Запуск REST API (Flask) на порту 5000..."
 nohup python -u app.py > "${LOG_DIR}/flask.log" 2>&1 &
 FLASK_PID=$!
