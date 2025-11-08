@@ -43,7 +43,7 @@ elif page == "Model classes":
                     for param in info['hyperparameters']:
                         st.write(f"  - {param}")
         except:
-            st.error("❌ Failed to load model classes")
+            st.error("Failed to load model classes")
 
 # 3. Train Model
 elif page == "Train model":
@@ -132,7 +132,7 @@ elif page == "Manage models":
             st.info("No models found. Train a model first! Try out our brand new training process in tab Train model")
             
     except Exception as e:
-        st.error(f"❌ Failed to load models: {e}")
+        st.error(f"Failed to load models: {e}")
 
 # 5. Predict
 elif page == "Predict":
